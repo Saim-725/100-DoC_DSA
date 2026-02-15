@@ -1,50 +1,21 @@
-#include <stdio.h>
+Problem: Given a matrix, calculate the sum of its primary diagonal elements. The primary diagonal consists of elements where row index equals column index.
 
-int main() {
-    int n;
-    
-    printf("Enter number of elements: ");
-    scanf("%d", &n);
+// Input:
+// - First line: two integers m and n
+// - Next m lines: n integers each
 
-    int nums[n];
-    int freq[n];   // frequency array
-    int i, j;
-    int hasDuplicate = 0;
+// Output:
+// - Print the sum of the primary diagonal elements
 
-    printf("Enter elements:\n");
-    for(i = 0; i < n; i++) {
-        scanf("%d", &nums[i]);
-        freq[i] = 0;   // initialize frequency
-    }
+// Example:
+// Input:
+// 3 3
+// 1 2 3
+// 4 5 6
+// 7 8 9
 
-    // Count frequency
-    for(i = 0; i < n; i++) {
-        if(freq[i] != -1) {
-            int count = 1;
-            for(j = i + 1; j < n; j++) {
-                if(nums[i] == nums[j]) {
-                    count++;
-                    freq[j] = -1;   // mark as counted
-                }
-            }
-            freq[i] = count;
-            if(count > 1)
-                hasDuplicate = 1;
-        }
-    }
+// Output:
+// 15
 
-    // Print result
-    if(hasDuplicate)
-        printf("\nOutput: true\n");
-    else
-        printf("\nOutput: false\n");
-
-    // Print frequencies
-    for(i = 0; i < n; i++) {
-        if(freq[i] != -1) {
-            printf("%d -> %d\n", nums[i], freq[i]);
-        }
-    }
-
-    return 0;
-}
+// Explanation:
+// 1 + 5 + 9 = 15
