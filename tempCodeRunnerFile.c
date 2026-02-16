@@ -1,21 +1,16 @@
-Problem: Given a matrix, calculate the sum of its primary diagonal elements. The primary diagonal consists of elements where row index equals column index.
+Problem: Given an array of integers, count the frequency of each distinct element and print the result.
 
 // Input:
-// - First line: two integers m and n
-// - Next m lines: n integers each
+// - First line: integer n (size of array)
+// - Second line: n integers
 
 // Output:
-// - Print the sum of the primary diagonal elements
+// - Print each element followed by its frequency in the format element:count
 
 // Example:
 // Input:
-// 3 3
-// 1 2 3
-// 4 5 6
-// 7 8 9
+// 5
+// 1 2 2 3 1
 
 // Output:
-// 15
-
-// Explanation:
-// 1 + 5 + 9 = 15
+// 1:2 2:2 3:1
