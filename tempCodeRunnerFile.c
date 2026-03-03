@@ -1,16 +1,23 @@
-Problem: Given an array of integers, count the frequency of each distinct element and print the result.
+Problem: Merge Two Sorted Linked Lists - Implement using linked list with dynamic memory allocation.
 
 // Input:
-// - First line: integer n (size of array)
-// - Second line: n integers
+// - First line: integer n
+// - Second line: n space-separated integers (first list)
+// - Third line: integer m
+// - Fourth line: m space-separated integers (second list)
 
 // Output:
-// - Print each element followed by its frequency in the format element:count
+// - Print the merged linked list elements, space-separated
 
 // Example:
 // Input:
 // 5
-// 1 2 2 3 1
+// 10 20 30 40 50
+// 4
+// 15 25 35 45
 
 // Output:
-// 1:2 2:2 3:1
+// 10 15 20 25 30 35 40 45 50
+
+// Explanation:
+// Compare nodes of both lists, append smaller to result, continue until all nodes are merged.
