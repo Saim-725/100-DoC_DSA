@@ -1,83 +1,61 @@
-// Problem Statement:
-// Construct a Binary Tree from the given level-order traversal.
+// Problem: Circular Linked List Creation and Traversal - Implement using linked list with dynamic memory allocation.
 
-// Input Format:
-// - First line contains integer N
-// - Second line contains N space-separated integers (-1 represents NULL)
+// Input:
+// - First line: integer n
+// - Second line: n space-separated integers
 
-// Output Format:
-// - Print inorder traversal of the constructed tree
+// Output:
+// - Print the circular linked list elements starting from head, space-separated
 
 // Example:
 // Input:
-// 7
-// 1 2 3 4 5 -1 6
+// 5
+// 10 20 30 40 50
 
 // Output:
-// 4 2 5 1 3 6
+// 10 20 30 40 50
+
+// Explanation:
+// Last node's next points to head. Traverse from head until returning to head to avoid infinite loop.
 
 #include <stdio.h>
 #include <stdlib.h>
 
 struct Node{
     int data;
-    struct Node *left;
-    struct Node *right;
+    struct Node *next;
 };
-
-struct Node* createNode(int data){
-    struct Node* newnode=(struct Node*)malloc(sizeof(struct Node));
-    newnode->data=data;
-    newnode->left=NULL;
-    newnode->right=NULL;
-    return newnode;
-}
-
-void inorder(struct Node* root){
-    if(root!=NULL){
-        inorder(root->left);
-        printf("%d ",root->data);
-        inorder(root->right);
-    }
-}
 
 int main(){
     int n;
     scanf("%d",&n);
 
-    int arr[n];
-    for(int i=0;i<n;i++){
-        scanf("%d",&arr[i]);
-    }
-
-    if(arr[0]==-1){
-        return 0;
-    }
-
-    struct Node* nodes[n];
+    struct Node *head=NULL,*temp=NULL,*newnode;
 
     for(int i=0;i<n;i++){
-        if(arr[i]==-1)
-            nodes[i]=NULL;
-        else
-            nodes[i]=createNode(arr[i]);
-    }
+        newnode=(struct Node*)malloc(sizeof(struct Node));
+        scanf("%d",&newnode->data);
+        newnode->next=NULL;
 
-    for(int i=0;i<n;i++){
-        if(nodes[i]!=NULL){
-            int left=2*i+1;
-            int right=2*i+2;
-
-            if(left<n)
-                nodes[i]->left=nodes[left];
-            if(right<n)
-                nodes[i]->right=nodes[right];
+        if(head==NULL){
+            head=newnode;
+            temp=newnode;
+        }
+        else{
+            temp->next=newnode;
+            temp=newnode;
         }
     }
 
-    struct Node* root=nodes[0];
+    temp->next=head;
 
-    inorder(root);
+    temp=head;
+    if(head!=NULL){
+        do{
+            printf("%d ",temp->data);
+            temp=temp->next;
+        }while(temp!=head);
+    }
 
     return 0;
 }
